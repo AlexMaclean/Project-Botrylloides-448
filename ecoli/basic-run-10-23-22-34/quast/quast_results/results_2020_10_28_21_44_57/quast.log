@@ -1,0 +1,54 @@
+/home/ubuntu/src/quast-5.0.2/quast.py ../flye/assembly.fasta
+
+Version: 5.0.2
+
+System information:
+  OS: Linux-5.3.0-1035-aws-x86_64-with-Ubuntu-18.04-bionic (linux_64)
+  Python version: 2.7.17
+  CPUs number: 48
+
+Started: 2020-10-28 21:44:57
+
+Logging to /home/ubuntu/Project-Botrylloides-448/ecoli/basic-run-10-23-22-34/quast/quast_results/results_2020_10_28_21_44_57/quast.log
+NOTICE: Maximum number of threads is set to 12 (use --threads option to set it manually)
+
+CWD: /home/ubuntu/Project-Botrylloides-448/ecoli/basic-run-10-23-22-34/quast
+Main parameters: 
+  MODE: default, threads: 12, minimum contig length: 500, minimum alignment length: 65, \
+  ambiguity: one, threshold for extensive misassembly size: 1000
+
+WARNING: Can't draw plots: python-matplotlib is missing or corrupted.
+
+Contigs:
+  Pre-processing...
+  ../flye/assembly.fasta ==> assembly
+
+2020-10-28 21:44:57
+Running Basic statistics processor...
+  Contig files: 
+    assembly
+  Calculating N50 and L50...
+    assembly, N50 = 4910926, L50 = 1, Total length = 5587985, GC % = 50.63, # N's per 100 kbp =  0.00
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2020-10-28 21:44:57
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 1: Creating Icarus viewers...
+Done
+
+2020-10-28 21:44:57
+RESULTS:
+  Text versions of total report are saved to /home/ubuntu/Project-Botrylloides-448/ecoli/basic-run-10-23-22-34/quast/quast_results/results_2020_10_28_21_44_57/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /home/ubuntu/Project-Botrylloides-448/ecoli/basic-run-10-23-22-34/quast/quast_results/results_2020_10_28_21_44_57/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /home/ubuntu/Project-Botrylloides-448/ecoli/basic-run-10-23-22-34/quast/quast_results/results_2020_10_28_21_44_57/report.html
+  Icarus (contig browser) is saved to /home/ubuntu/Project-Botrylloides-448/ecoli/basic-run-10-23-22-34/quast/quast_results/results_2020_10_28_21_44_57/icarus.html
+  Log is saved to /home/ubuntu/Project-Botrylloides-448/ecoli/basic-run-10-23-22-34/quast/quast_results/results_2020_10_28_21_44_57/quast.log
+
+Finished: 2020-10-28 21:44:57
+Elapsed time: 0:00:00.709585
+NOTICEs: 2; WARNINGs: 1; non-fatal ERRORs: 0
+
+Thank you for using QUAST!

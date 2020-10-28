@@ -1,0 +1,14 @@
+#!/bin/bash
+
+CONF=$1
+
+masurca $CONF || exit 1
+
+DATE=$(date +"-%m-%d-%H-%M")
+OUT_PATH="${CONF%%.*}$DATE"
+
+mkdir $OUT_PATH
+mv assemble.sh  $OUT_PATH/
+cd $OUT_PATH
+
+./assemble.sh
