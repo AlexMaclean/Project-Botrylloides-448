@@ -1,0 +1,10 @@
+#!/bin/bash
+
+KMIN=25
+KMAX=125
+KSTEP=5
+
+for K in $(eval echo "{$KMIN..$KMAX..$KSTEP}")
+  do
+     echo "Welcome $K times"
+ done
