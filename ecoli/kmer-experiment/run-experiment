@@ -4,7 +4,36 @@ KMIN=25
 KMAX=125
 KSTEP=5
 
-for K in $(eval echo "{$KMIN..$KMAX..$KSTEP}")
-  do
-     echo "Welcome $K times"
- done
+CONFIG_FILE=kmer.conf
+DATA_FILE=data.csv
+
+function run-experiment {
+    echo "k,time" > $DATA_FILE
+    for K in $(eval echo "{$KMIN..$KMAX..$KSTEP}")
+    do
+        run-trial $K
+    done
+}
+
+function run-trial {
+   K=$1
+   echo "=== Running $K-mer Trial ==="
+
+   sed -i "s/GRAPH_KMER_SIZE =.*/GRAPH_KMER_SIZE = $K/g" $CONFIG_FILE
+
+   masurca $CONFIG_FILE || exit 1
+
+   OUT_PATH="$K-mer-trial"
+
+   mkdir $OUT_PATH
+   mv assemble.sh  $OUT_PATH/
+   cd $OUT_PATH
+
+   (time ./assemble.sh  > console-output.txt) &> "runtime.txt"
+   TIME=$(cat "runtime.txt" | grep "real.[^ ]*" | grep "[0-9].*")
+
+   cd ..
+   echo "$K,$TIME" >> $DATA_FILE
+}
+
+run-experiment
