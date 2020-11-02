@@ -13,6 +13,8 @@ function run-experiment {
     do
         run-trial $K
     done
+
+    sed -i 's/real/ /g' $DATA_FILE
 }
 
 function run-trial {
