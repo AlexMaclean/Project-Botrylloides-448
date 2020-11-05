@@ -1,17 +1,17 @@
 #!/bin/bash
 
-KMIN=25
-KMAX=125
-KSTEP=5
+K_MIN=25
+K_MAX=125
+K_STEP=5
 
 CONFIG_FILE=kmer.conf
 DATA_FILE=data.csv
 
 function run-experiment {
     echo "k,time" > $DATA_FILE
-    for K in $(eval echo "{$KMIN..$KMAX..$KSTEP}")
+    for K in $(eval echo "{$K_MIN..$K_MAX..$K_STEP}")
     do
-        run-trial $K
+        run-trial "$K"
     done
 
     sed -i 's/real/ /g' $DATA_FILE
@@ -27,9 +27,9 @@ function run-trial {
 
    OUT_PATH="$K-mer-trial"
 
-   mkdir $OUT_PATH
-   mv assemble.sh  $OUT_PATH/
-   cd $OUT_PATH
+   mkdir "$OUT_PATH"
+   mv assemble.sh "$OUT_PATH"/
+   cd "$OUT_PATH" || return
 
    (time ./assemble.sh  > console-output.txt) &> "runtime.txt"
    TIME=$(cat "runtime.txt" | grep "real.[^ ]*" | grep "[0-9].*")
