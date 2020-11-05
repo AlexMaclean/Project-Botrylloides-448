@@ -13,8 +13,6 @@ function run-experiment {
     do
         run-trial "$K"
     done
-
-    sed -i 's/real/ /g' $DATA_FILE
 }
 
 function run-trial {
@@ -31,11 +29,10 @@ function run-trial {
    mv assemble.sh "$OUT_PATH"/
    cd "$OUT_PATH" || return
 
-   (time ./assemble.sh  > console-output.txt) &> "runtime.txt"
-   TIME=$(cat "runtime.txt" | grep "real.[^ ]*" | grep "[0-9].*")
+   STATS=$(../../assemble-with-stats)
 
    cd ..
-   echo "$K,$TIME" >> $DATA_FILE
+   echo "$K,$STATS" >> $DATA_FILE
 }
 
 run-experiment
