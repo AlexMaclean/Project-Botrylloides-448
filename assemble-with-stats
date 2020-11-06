@@ -3,7 +3,8 @@
 # This script will run assemble.sh for a MaSuRca run and collect some stats
 # plus do some other work
 
-# CSV output to STDOUT: "(Real Time), (Memory Usage), (Size)
+# CSV output to STDOUT: "(Real Time), (num contigs), (N50), (largest contig),
+#    (total length)"
 
 TIMER=/usr/bin/time
 QUAST=/home/ubuntu/src/quast-5.0.2/quast.py
@@ -11,20 +12,25 @@ QUAST=/home/ubuntu/src/quast-5.0.2/quast.py
 STDOUT_FILE="console-output.txt"
 DATA_FILE="data.csv"
 
-($TIMER -f "%E , %K ," ./assemble.sh > $STDOUT_FILE) &> $DATA_FILE
+#-------------------------------------------------------------------------------
 
+# Start by acctually running assemble.sh
+($TIMER -f "%E," ./assemble.sh > $STDOUT_FILE) &> $DATA_FILE
+
+# Run a quast report, don't let it write it's logs to stdout tho
 $QUAST flye/assembly.fasta &> /dev/null
 
+# Helper function greps the latest quast report in the current directory for
+# the number that falls directly after the argument
 function quast-stat {
   grep -oP "(?<=$1\t)[0-9]+" quast_results/latest/report.tsv
 }
 
-quast-stat "# contigs" >> $DATA_FILE
-echo "," >> $DATA_FILE
-quast-stat "N50" >> $DATA_FILE
-echo "," >> $DATA_FILE
-quast-stat "Largest contig" >> $DATA_FILE
-echo "," >> $DATA_FILE
-quast-stat "Total length" >> $DATA_FILE
+# Add the relevant stats to the datafile csv
+{ quast-stat "# contigs"; echo ",";
+  quast-stat "N50"; echo ",";
+  quast-stat "Largest contig"; echo ",";
+  quast-stat "Total length"; } >> $DATA_FILE
 
+# Write everything out of the data file to stdout, with newlines removed
 tr -d '\n' < $DATA_FILE
