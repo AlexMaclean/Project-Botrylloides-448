@@ -1,8 +1,8 @@
 #!/bin/bash
 
 K_MIN=25
-K_MAX=125
-K_STEP=5
+K_MAX=127
+K_STEP=2
 
 CONFIG_FILE=kmer.conf
 DATA_FILE=data.csv
@@ -26,7 +26,7 @@ function run-trial {
     K=$1
     OUT_PATH="$K-mer-trial"
 
-    echo "\e[36m ===== Running $K-mer Trial ====="
+    printf '\e[1;7m%-6s\e[m\ue0b0\n' " Running the $K-mer Trial "
 
     # Change the contig file so it has the right K value
     sed -i "s/GRAPH_KMER_SIZE =.*/GRAPH_KMER_SIZE = $K/g" $CONFIG_FILE
