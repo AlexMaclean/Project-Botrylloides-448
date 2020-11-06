@@ -13,7 +13,7 @@ DATA_FILE="data.csv"
 
 ($TIMER -f "%E , %K ," ./assemble.sh > $STDOUT_FILE) &> $DATA_FILE
 
-$QUAST flye/assembly.fasta
+$QUAST flye/assembly.fasta &> /dev/null
 
 function quast-stat {
   grep -oP "(?<=$1\t)[0-9]+" quast_results/latest/report.tsv
