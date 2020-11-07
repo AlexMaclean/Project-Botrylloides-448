@@ -16,17 +16,17 @@ DATA_FILE="data.csv"
 
 # Start by acctually running assemble.sh
 START_TIME=$(date +"%s")
-($TIMER -f "%E," ./assemble.sh > $STDOUT_FILE) &> $DATA_FILE
+($TIMER -f "%E," sleep 2 >> $STDOUT_FILE) &> $DATA_FILE
 
 # Helper function pulls a time from the stdout file
 function extract-time {
-  grep $1 $STDOUT_FILE | grep -oP "(?<=\[).*(?=])"
+  grep "$1" $STDOUT_FILE | grep -oP "(?<=\[).*(?=])"
 }
 
 function subtime {
-  T=$(extract-time $1)
-  T=$(date +"%s" -d $T)
-  echo (( T - START_TIME ))
+  T=$(extract-time "$1")
+  T=$(date +"%s" -d "$T")
+  echo $(( T - START_TIME ))
 }
 
 { subtime "Creating mer database for Quorum"; echo ",";
