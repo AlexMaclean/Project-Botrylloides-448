@@ -7,12 +7,15 @@ K_STEP=2
 CONFIG_FILE=kmer.conf
 DATA_FILE=data.csv
 
+ASSEMBLE=/home/ubuntu/Project-Botrylloides-448/assemble-with-stats
+
 #-------------------------------------------------------------------------------
 
 # Top level function to run experiment, just loops through k running trials
 function run-experiment {
     # Add the header to the output data.csv
-    echo "k,Real/Flye Assembly time,Quorum Error Correcting time,Estimating Genome Size time,Super-Reads time,Mega-Reads time,Consensus Gap Joining time,# contigs,N50,largest contig,total length" > $DATA_FILE
+    HEADER=$($ASSEMBLE header)
+    echo "k,$HEADER" > $DATA_FILE
 
     # For every K we care about run a trial
     for K in $(eval echo "{$K_MIN..$K_MAX..$K_STEP}")
@@ -37,7 +40,7 @@ function run-trial {
     mv assemble.sh "$OUT_PATH"/
     cd "$OUT_PATH" || return
 
-    STATS=$(../../../assemble-with-stats)
+    STATS=$($ASSEMBLE)
     cd ..
     echo "$K,$STATS" >> $DATA_FILE
 }
