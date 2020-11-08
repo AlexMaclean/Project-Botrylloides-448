@@ -1,9 +1,10 @@
 data <- read.csv(file = 'data-11-8.csv', header = TRUE)
+x <- data$threads
 
 ## Graph: Genome Length and N50 -------------------------------------------------------------
-plot(data$k, data$total.length, col = "black", type = "l",
+plot(x, data$total.length, col = "black", type = "l",
      ylim = c(0, max(data$total.length)), xlab = "K-mer Size", ylab = "Length (bp)")
-lines(data$k, data$N50, col = "blue")
+lines(x, data$N50, col = "blue")
 
 title(main = "Genome Quality Vs K-Mer Size")
 legend("bottomleft",
@@ -13,7 +14,7 @@ legend("bottomleft",
        inset = c(0.1, 0.1))
 
 ## Graph: Number of Contigs -----------------------------------------------------------------
-plot(data$k, data$X..contigs, type = "b",
+plot(x, data$X..contigs, type = "b",
      ylim = c(0, max(data$X..contigs)), ylab = "# Contigs", xlab = "K-mer Size")
 title(main = "Number of Contigs Vs K-Mer Size")
 
@@ -21,27 +22,29 @@ title(main = "Number of Contigs Vs K-Mer Size")
 start <- as.POSIXct("00:00:00", format = "%H:%M:%S")
 real.time <- as.POSIXct(data$Real.Flye.Assembly.time, format = "%M:%S")
 
-plot(data$k, real.time, ylim = c(start, max(real.time)),
-     type = "b", ylab = "Time", xlab = "K-mer Size")
-lines(data$k, as.POSIXct(data$Quorum.Error.Correcting.time, format = "%s", origin = start),
-      col = "red", type = "b")
-lines(data$k, as.POSIXct(data$Estimating.Genome.Size.time, format = "%s", origin = start),
-      col = "orange", type = "b")
-lines(data$k, as.POSIXct(data$Super.Reads.time, format = "%s", origin = start),
-      col = "purple", type = "b")
-lines(data$k, as.POSIXct(data$Mega.Reads.time, format = "%s", origin = start),
-      col = "cyan", type = "b")
-lines(data$k, as.POSIXct(data$Consensus.Gap.Joining.time, format = "%s", origin = start),
-      col = "blue", type = "b")
+seconds <- function(r) {
+  as.POSIXct(r, format = "%s", origin = start)
+}
+
+ty <- "o"
+cols <- c("black", "blue", "cyan", "purple", "orange", "red")
+
+plot(x, real.time, ylim = c(start, max(real.time)), col = cols[1], type = ty,
+     ylab = "Time", xlab = "K-mer Size")
+lines(x, seconds(data$Quorum.Error.Correcting.time), col = cols[6], type = ty)
+lines(x, seconds(data$Estimating.Genome.Size.time), col = cols[5], type = ty)
+lines(x, seconds(data$Super.Reads.time), col = cols[4], type = ty)
+lines(x, seconds(data$Mega.Reads.time), col = cols[3], type = ty)
+lines(x, seconds(data$Consensus.Gap.Joining.time), col = cols[2], type = ty)
 
 title(main = "Runtimes Vs K-Mer Size")
-legend("topleft",
+legend("topright",
        legend = c("Real/Flye Assembly",
                   "Consensus Gap Joining",
                   "Mega-Reads",
                   "Super-Reads",
                   "Estimating Genome Size",
                   "Quorum Error Correcting"),
-       col = c("black", "blue", "cyan", "purple", "orange", "red"),
+       col = cols,
        pch = 1,
-       inset = c(0.1, 0.2))
+       inset = c(0.05, 0.05))
