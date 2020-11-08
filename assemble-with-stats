@@ -3,8 +3,9 @@
 # This script will run assemble.sh for a MaSuRca run and collect some stats
 # plus do some other work
 
-# CSV output to STDOUT: "(Real Time), (num contigs), (N50), (largest contig),
-#    (total length)"
+# CSV output to STDOUT: "(Real/Flye assembly Time), (Quorum Error correcting time),
+# (Estimating genome size time), (Super-Reads time), (Mega-Reads time), (Consensus Gap Joining time)
+# (num contigs), (N50), (largest contig), (total length)"
 
 TIMER=/usr/bin/time
 QUAST=/home/ubuntu/src/quast-5.0.2/quast.py
@@ -29,10 +30,10 @@ function subtime {
   echo $(( T - START_TIME ))
 }
 
-{ subtime "Creating mer database for Quorum"; echo ",";
-  subtime "Running mega-reads correction/assembly"; echo ",";
-  subtime "Estimating genome size"; echo ",";
-  subtime "Running mega-reads correction/assembly"; echo ",";
+{ subtime "Estimating genome size"; echo ",";
+  subtime "Computing super reads from PE"; echo ",";
+  subtime "Reducing super-read k-mer size"; echo ",";
+  subtime "Refining alignments"; echo ",";
   subtime "Running assembly with Flye"; echo ","; } >> $DATA_FILE
 
 #-------------------------------------------------------------------------------
