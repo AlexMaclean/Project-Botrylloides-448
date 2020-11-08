@@ -1,4 +1,4 @@
-Real/Flye Assembly time,Quorum Error Correcting time,Estimating Genome Size time,Super-Reads time,Mega-Reads time,Consensus Gap Joining time,# contigs,N50,largest contig,total length
+k,Real/Flye Assembly time,Quorum Error Correcting time,Estimating Genome Size time,Super-Reads time,Mega-Reads time,Consensus Gap Joining time,# contigs,N50,largest contig,total length
 25,10:06.47,50,103,134,221,252,8,4755151,4755151,5637334
 27,10:19.97,49,103,133,208,239,7,4886045,4886045,5606819
 29,10:27.27,51,108,139,229,259,6,5231605,5231605,5624519
