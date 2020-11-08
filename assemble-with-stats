@@ -16,7 +16,10 @@ DATA_FILE="data.csv"
 #-------------------------------------------------------------------------------
 
 if [ $1 = "header" ]; then
-    echo "Real/Flye Assembly time,Quorum Error Correcting time,Estimating Genome Size time,Super-Reads time,Mega-Reads time,Consensus Gap Joining time,# contigs,N50,largest contig,total length"
+    printf "Real/Flye Assembly time,Quorum Error Correcting time,Estimating Genome Size time,"
+    printf "Super-Reads time,Mega-Reads time,Consensus Gap Joining time,"
+    printf "# contigs,N50,largest contig,total length"
+    exit
 fi
 
 #-------------------------------------------------------------------------------
