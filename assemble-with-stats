@@ -28,6 +28,7 @@ START_TIME=$(date +"%s")
 # Helper function pulls a time from the stdout file
 function extract-time {
   grep "$1" $STDOUT_FILE | grep -oP "(?<=\[).*(?=])"
+  exit
 }
 
 function subtime {
