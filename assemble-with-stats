@@ -15,7 +15,7 @@ DATA_FILE="data.csv"
 
 #-------------------------------------------------------------------------------
 
-if [ $1 == "header" ]; then
+if [ $# -eq 1 ] && [ $1 == "header" ]; then
     printf "Real/Flye Assembly time,Quorum Error Correcting time,Estimating Genome Size time,"
     printf "Super-Reads time,Mega-Reads time,Consensus Gap Joining time,"
     printf "# contigs,N50,largest contig,total length"
