@@ -16,7 +16,7 @@ DATA_FILE="data.csv"
 
 # Start by acctually running assemble.sh
 START_TIME=$(date +"%s")
-($TIMER -f "%E," sleep 2 >> $STDOUT_FILE) &> $DATA_FILE
+($TIMER -f "%E," ./assemble.sh >> $STDOUT_FILE) &> $DATA_FILE
 
 # Helper function pulls a time from the stdout file
 function extract-time {
