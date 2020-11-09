@@ -7,8 +7,8 @@
 
 #### kmer-experiment
 
-### [scrips/](scripts)
+### [/scrips/](/scripts)
 
- - [assemble-with-stats](scrips/assemble-with-stats)
- - [cleanup-experiment](scrips/cleanup-experiment)
- - [graphs.R](scrips/graphs.R)
+ - [assemble-with-stats](/scrips/assemble-with-stats)
+ - [cleanup-experiment](/scrips/cleanup-experiment)
+ - [graphs.R](/scrips/graphs.R)
