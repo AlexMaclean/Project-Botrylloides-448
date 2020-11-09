@@ -1,13 +1,13 @@
 #!/bin/bash
 
-THREAD_MIN=5
-THREAD_MAX=100
-THREAD_STEP=5
+THREAD_MIN=2
+THREAD_MAX=59
+THREAD_STEP=3
 
 CONFIG_FILE=threads.conf
 DATA_FILE=data.csv
 
-ASSEMBLE=/home/ubuntu/Project-Botrylloides-448/assemble-with-stats
+ASSEMBLE=/home/ubuntu/Project-Botrylloides-448/scripts/assemble-with-stats
 
 #-------------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ function run-trial {
 
     printf '\e[1;7m%-6s\e[m\ue0b0\n' " Running the $T Thread Trial "
 
-    # Change the contig file so it has the right K value
+    # Change the contig file so it has the right thread value
     sed -i "s/NUM_THREADS =.*/NUM_THREADS = $T/g" $CONFIG_FILE
 
     masurca $CONFIG_FILE || exit 1

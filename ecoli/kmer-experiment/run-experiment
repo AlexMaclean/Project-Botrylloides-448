@@ -7,7 +7,7 @@ K_STEP=2
 CONFIG_FILE=kmer.conf
 DATA_FILE=data.csv
 
-ASSEMBLE=/home/ubuntu/Project-Botrylloides-448/assemble-with-stats
+ASSEMBLE=/home/ubuntu/Project-Botrylloides-448/scripts/assemble-with-stats
 
 #-------------------------------------------------------------------------------
 
