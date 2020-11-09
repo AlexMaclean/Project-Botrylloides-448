@@ -3,11 +3,9 @@
 
 ## File Structure
 
-### ecoli
+### [ecoli/](ecoli/)
 
-#### kmer-experiment
-
-### [/scripts/](/scripts)
+### [scripts/](/scripts)
 
  - [assemble-with-stats](/scripts/assemble-with-stats)
  - [cleanup-experiment](/scripts/cleanup-experiment)
