@@ -3,11 +3,11 @@
 DATA_FILE=data.csv
 ASSEMBLE=/home/ubuntu/Project-Botrylloides-448/scripts/assemble-with-stats
 
-NAME=$1          # ex: k
-CONFIG_FILE=$2   # ex: kmer.conf
-CONFIG_ARG=$3    # ex: GRAPH_KMER_SIZE
-TRIAL_NAME=$4    # ex: %i-kem
-VALUES="${@:5}"  # ex: 1 2 3 ...
+NAME="$1"          # ex: k
+CONFIG_FILE="$2"   # ex: kmer.conf
+CONFIG_ARG="$3"    # ex: GRAPH_KMER_SIZE
+TRIAL_NAME="$4"    # ex: %i-kem
+VALUES="${@:5}"    # ex: 1 2 3 ...
 
 #-------------------------------------------------------------------------------
 
