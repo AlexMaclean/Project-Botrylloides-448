@@ -1,3 +1,8 @@
 #!/bin/bash
 
-/home/ubuntu/Project-Botrylloides-448/scripts/run-config-experiment "Jump Limit" "jump-limit.conf" "LIMIT_JUMP_COVERAGE" "%i-jump" {10..400.10}
+/home/ubuntu/Project-Botrylloides-448/scripts/run-config-experiment \
+	"Jump Limit" \
+	"jump-limit.conf" \
+	"LIMIT_JUMP_COVERAGE" \
+	"%i-jump" \
+	{10..400..10}

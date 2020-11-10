@@ -7,14 +7,14 @@ NAME=$1          # ex: k
 CONFIG_FILE=$2   # ex: kmer.conf
 CONFIG_ARG=$3    # ex: GRAPH_KMER_SIZE
 TRIAL_NAME=$4    # ex: %i-kem
-VALUES=$5        # ex: 1 2 3 ...
+VALUES="${@:5}"  # ex: 1 2 3 ...
 
 #-------------------------------------------------------------------------------
 
 # Top level function to run experiment, just loops through values running trials
 function run-experiment {
     echo "$NAME,$($ASSEMBLE header)" > $DATA_FILE
-    for V in $VALUES; do [ run-trial "$V" ]; done
+    for V in $VALUES; do run-trial "$V"; done
 }
 
 # Given a value runs a timed version of MaSurCa on it and record stats
