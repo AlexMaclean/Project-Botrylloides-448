@@ -28,8 +28,8 @@ function run-trial {
     cd "$OUT_PATH" || return
 
     # Change the contig file so it has the right thread value
-    sed -i "s/$CONFIG_ARG =.*/$CONFIG_ARG = $1/g" $CONFIG_FILE
-    masurca $CONFIG_FILE || exit 1
+    sed -i "s/$CONFIG_ARG =.*/$CONFIG_ARG = $1/g" $(basename $CONFIG_FILE)
+    masurca $(basename $CONFIG_FILE) || exit 1
     STATS=$($ASSEMBLE)
 
     cd ..
