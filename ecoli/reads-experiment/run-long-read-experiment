@@ -26,7 +26,7 @@ function run-trial {
     if [ $1 -ne 1 ]
       then
         NEW_LEN=$((LEN - 20536))
-        head -n $NEW_LEN $LONG_READ_FILE temp.txt; mv temp.txt $LONG_READ_FILE
+        head -n $NEW_LEN $LONG_READ_FILE > temp.txt; mv temp.txt $LONG_READ_FILE
         LEN=$NEW_LEN
     fi
 
