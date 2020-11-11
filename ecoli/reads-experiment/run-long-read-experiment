@@ -21,8 +21,15 @@ function run-trial {
 
     printf '\e[1;7m %-6s \e[m\ue0b0\n' "$OUT_PATH"
 
-    wc -l $LONG_READ_FILE
+    LEN=$(wc -l $LONG_READ_FILE | grep "^[0-9]*")
 
+    if [ $1 -ne 1 ]
+      then
+        echo "a"
+        LEN="4"
+    fi
+
+    echo $LEN
     # mkdir "$OUT_PATH"
     # cp "$CONFIG_FILE" "$OUT_PATH/"
     # cd "$OUT_PATH" || return
