@@ -12,7 +12,7 @@ LONG_READ_FILE=/home/ubuntu/Project-Botrylloides-448/ecoli/raw-data/long-reads-c
 function run-experiment {
     cp $LONG_READ_FILE_ORIGINAL $LONG_READ_FILE
     echo "Long Read Count,$($ASSEMBLE header)" > $DATA_FILE
-    for V in {1..60}; do run-trial $V; done
+    for V in {1..80}; do run-trial $V; done
 }
 
 # Given a value runs a timed version of MaSurCa on it and record stats
@@ -21,15 +21,18 @@ function run-trial {
 
     printf '\e[1;7m %-6s \e[m\ue0b0\n' "$OUT_PATH"
 
-    LEN=$(wc -l $LONG_READ_FILE | grep "^[0-9]*")
+    LEN=$(wc -l $LONG_READ_FILE | grep -o "^[0-9]*")
 
     if [ $1 -ne 1 ]
       then
-        echo "a"
-        LEN="4"
+        NEW_LEN=$((LEN - 20536))
+        head -n $NEW_LEN $LONG_READ_FILE temp.txt; mv temp.txt $LONG_READ_FILE
+        LEN=$NEW_LEN
     fi
 
-    echo $LEN
+    READ_COUNT=$((LEN / 4))
+    echo "read count " $READ_COUNT
+    
     # mkdir "$OUT_PATH"
     # cp "$CONFIG_FILE" "$OUT_PATH/"
     # cd "$OUT_PATH" || return
@@ -39,7 +42,7 @@ function run-trial {
     # STATS=$($ASSEMBLE)
 
     # cd ..
-    # echo "$1,$STATS" >> $DATA_FILE
+    echo "$READ_COUNT,$STATS" >> $DATA_FILE
 }
 
 run-experiment
