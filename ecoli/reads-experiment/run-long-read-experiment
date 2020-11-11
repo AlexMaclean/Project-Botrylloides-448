@@ -3,11 +3,14 @@
 DATA_FILE=data.csv
 ASSEMBLE=/home/ubuntu/Project-Botrylloides-448/scripts/assemble-with-stats
 CONFIG_FILE=alternate-reads.conf
+LONG_READ_FILE_ORIGINAL=/home/ubuntu/Project-Botrylloides-448/ecoli/raw-data/long-reads.fastq
+LONG_READ_FILE=/home/ubuntu/Project-Botrylloides-448/ecoli/raw-data/long-reads-copy.fastq
 
 #-------------------------------------------------------------------------------
 
 # Top level function to run experiment, just loops through values running trials
 function run-experiment {
+    cp $LONG_READ_FILE_ORIGINAL $LONG_READ_FILE
     echo "Long Read Count,$($ASSEMBLE header)" > $DATA_FILE
     for V in {1..60}; do run-trial $V; done
 }
@@ -17,6 +20,8 @@ function run-trial {
     OUT_PATH=$(printf "long-read-%i-trial" $1)
 
     printf '\e[1;7m %-6s \e[m\ue0b0\n' "$OUT_PATH"
+
+    wc -l $LONG_READ_FILE
 
     # mkdir "$OUT_PATH"
     # cp "$CONFIG_FILE" "$OUT_PATH/"
