@@ -11,9 +11,9 @@ LONG_READ_FILE=/home/ubuntu/Project-Botrylloides-448/ecoli/raw-data/long-reads-c
 # Top level function to run experiment, just loops through values running trials
 function run-experiment {
     #cp $LONG_READ_FILE_ORIGINAL $LONG_READ_FILE
-    head -n 50815 $LONG_READ_FILE_ORIGINAL > temp.txt; mv temp.txt $LONG_READ_FILE
+    head -n 203260 $LONG_READ_FILE_ORIGINAL > temp.txt; mv temp.txt $LONG_READ_FILE
     echo "Long Read Count,$($ASSEMBLE header)" > $DATA_FILE
-    for V in {1..9}; do run-trial $V; done #89
+    for V in {1..10}; do run-trial $V; done #89
 }
 
 # Given a value runs a timed version of MaSurCa on it and record stats
