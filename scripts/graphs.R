@@ -9,6 +9,7 @@ plot.length.n50 <- function(data, x, xlab) {
   plot(x, data$total.length, col = "black", type = "l",
        ylim = c(0, max(data$total.length)), xlab = xlab, ylab = "Length (bp)")
   lines(x, data$N50, col = "blue")
+  lines(x, data$largest.contig, col = "purple")
 
   title(main = paste("Genome Quality Vs", xlab))
   legend("bottomleft",
@@ -20,9 +21,10 @@ plot.length.n50 <- function(data, x, xlab) {
 
 # Plots the number of contigs generated against the provided x-axis
 plot.num.contigs <- function(data, x, xlab) {
-  plot(x, data$X..contigs, type = "b",
+  plot(x, data$X..contigs, type = "p",
        ylim = c(0, max(data$X..contigs)), ylab = "# Contigs", xlab = xlab)
   title(main = paste("Number of Contigs Vs", xlab))
+  abline(lm(data$X..contigs ~ x))
 }
 
 # Plots all the run times against the provided x-axis, also take a position for the legend
