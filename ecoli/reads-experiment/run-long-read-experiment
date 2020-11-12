@@ -33,6 +33,11 @@ function run-trial {
     READ_COUNT=$((LEN / 4))
     echo "Read Count: " $READ_COUNT
 
+    if [ $1 -lt 30 ]
+      then
+        return
+    fi
+
     mkdir "$OUT_PATH"
     cp "$CONFIG_FILE" "$OUT_PATH/"
     cd "$OUT_PATH" || return
@@ -41,6 +46,8 @@ function run-trial {
     STATS=$($ASSEMBLE)
 
     cd ..
+    rm -rf "$OUT_PATH"
+
     echo "$READ_COUNT,$STATS" >> $DATA_FILE
 }
 
