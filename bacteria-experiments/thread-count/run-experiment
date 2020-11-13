@@ -5,4 +5,4 @@
 	../ecoli.conf \
 	"NUM_THREADS" \
 	"%i-threads" \
-	{2..3..59}
+	{2..59..3}
