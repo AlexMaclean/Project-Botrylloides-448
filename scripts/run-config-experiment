@@ -13,6 +13,7 @@ VALUES="${@:5}"    # ex: 1 2 3 ...
 
 # Top level function to run experiment, just loops through values running trials
 function run-experiment {
+    echo "$VALUES"
     echo "$NAME,$($ASSEMBLE header)" > $DATA_FILE
     for V in $VALUES; do run-trial "$V"; done
 }
