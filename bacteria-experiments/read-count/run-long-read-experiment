@@ -1,17 +1,29 @@
 #!/bin/bash
 
+TRIALS=50
+CONFIG_FILE=$1
+READ_FILE=$2
+
 DATA_FILE=data.csv
 ASSEMBLE=/home/ubuntu/Project-Botrylloides-448/scripts/assemble-with-stats
-CONFIG_FILE=alternate-reads.conf
-LONG_READ_FILE_ORIGINAL=/home/ubuntu/Project-Botrylloides-448/ecoli/raw-data/long-reads.fastq
-LONG_READ_FILE=/home/ubuntu/Project-Botrylloides-448/ecoli/raw-data/long-reads-copy.fastq
 
 #-------------------------------------------------------------------------------
 
 # Top level function to run experiment, just loops through values running trials
 function run-experiment {
-    #cp $LONG_READ_FILE_ORIGINAL $LONG_READ_FILE
-    head -n 203260 $LONG_READ_FILE_ORIGINAL > temp.txt; mv temp.txt $LONG_READ_FILE
+    NEW_CONFIG_FILE="./$(basename CONFIG_FILE)"
+    cp $CONFIG_FILE $NEW_CONFIG_FILE
+    CONFIG_FILE=$NEW_CONFIG_FILE
+
+    NEW_READ_FILE="$READ_FILE.copy"
+    cp $READ_FILE $NEW_CONFIG_FILE
+    sed -i "s/$(basename $READ_FILE)/$(basename $NEW_READ_FILE)/g" $CONFIG_FILE
+    READ_FILE=$NEW_READ_FILE
+
+    RLEN=$(wc -l $READ_FILE)
+    STEP=$(( ( ( RLEN / (TRIALS - 1) ) / 4 ) * 4 ))
+    echo "Running $TRIALS with a step of $STEP reads (file length $RLEN)"
+
     echo "Long Read Count,$($ASSEMBLE header)" > $DATA_FILE
     for V in {1..10}; do run-trial $V; done #89
 }
@@ -24,10 +36,10 @@ function run-trial {
 
     LEN=$(wc -l $LONG_READ_FILE | grep -o "^[0-9]*")
 
-    if [ $1 -ne 100 ]
+    if [ $1 -ne 1 ]
       then
-        NEW_LEN=$((LEN - 20536))
-        head -n $NEW_LEN $LONG_READ_FILE > temp.txt; mv temp.txt $LONG_READ_FILE
+        NEW_LEN=$((LEN - STEP))
+        head -n $NEW_LEN $READ_FILE > temp.txt; mv temp.txt $READ_FILE
         LEN=$NEW_LEN
     fi
 
