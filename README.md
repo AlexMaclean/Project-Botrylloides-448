@@ -1,4 +1,8 @@
 # Project Botrylloides CSC 448
+**CS** Alex MacLean, Jonathan Schreiber
+**BIO** Brendan Hughes, Sarah Wax, Cassidy Andrasz
+## Descrition
+This repository contains the code and code generated artifacts for the Botrylloides Group investigation of the MaSurRCa hybrid assembler.
 
 ## File Structure
 
