@@ -2,7 +2,7 @@
 
 ## File Structure
 
-### [ecoli/](ecoli/)
+### [bacteria-expeiments/](bacteria-expeiments/)
 
 ### [scripts/](/scripts)
 
