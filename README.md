@@ -15,20 +15,12 @@ This repository contains the code and code generated artifacts for the Botrylloi
 This directory holds the setup and data of the various experiments we ran, it also holds the shared
 config files.
 
-- **[thread-count](bacteria-experiments/thread-count)**
-  [:chart_with_upwards_trend: plots](bacteria-experiments/thread-count/Rplots.pdf)
-  [:clipboard: raw data](bacteria-experiments/thread-count/data-11-8-2.csv)
-  [:page_with_curl: script](bacteria-experiments/thread-count/run-experiment)
-
+- **[thread-count](bacteria-experiments/thread-count)** [:chart_with_upwards_trend: plots](bacteria-experiments/thread-count/Rplots.pdf) [:clipboard: raw data](bacteria-experiments/thread-count/data-11-8-2.csv) [:page_with_curl: script](bacteria-experiments/thread-count/run-experiment)
 - **[jf-hash-size](bacteria-experiments/jf-hash-size)**
   [:chart_with_upwards_trend: plots](bacteria-experiments/jf-hash-size/Rplots.pdf)
   [:clipboard: raw data](bacteria-experiments/jf-hash-size/data-11-9.csv)
   [:page_with_curl: script](bacteria-experiments/jf-hash-size/run-experiment)
-
-- **[thread-count](bacteria-experiments/thread-count)**
-  [:chart_with_upwards_trend: plots](bacteria-experiments/thread-count/Rplots.pdf)
-  [:clipboard: raw data](bacteria-experiments/thread-count/data-11-8-2.csv)
-  [:page_with_curl: script](bacteria-experiments/thread-count/run-experiment)
+- **[jump-limit](bacteria-experiments/jump-limit)** [:chart_with_upwards_trend: plots](bacteria-experiments/jump-limit/Rplots.pdf) [:clipboard: raw data](bacteria-experiments/jump-limit/data-11-10.csv) [:page_with_curl: script](bacteria-experiments/jump-limit/run-experiment)
 
 
 ### [scripts/](/scripts)
