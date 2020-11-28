@@ -15,6 +15,11 @@ This repository contains the code and code generated artifacts for the Botrylloi
 This directory holds the setup and data of the various experiments we ran, it also holds the shared
 config files.
 
+- **[thread-count](bacteria-experiments/thread-count)**
+  [:chart_with_upwards_trend: plots](bacteria-experiments/thread-count/Rplots.pdf)
+  [:clipboard: raw data](bacteria-experiments/thread-count/data-11-8-2.csv)
+  [:page_with_curl: script](bacteria-experiments/thread-count/run-experiment)
+
 ### [scripts/](/scripts)
 
 The scripts directory holds some shared helper scripts that many of the experiments use
