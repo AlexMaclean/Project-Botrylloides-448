@@ -20,6 +20,17 @@ config files.
   [:clipboard: raw data](bacteria-experiments/thread-count/data-11-8-2.csv)
   [:page_with_curl: script](bacteria-experiments/thread-count/run-experiment)
 
+- **[jf-hash-size](bacteria-experiments/jf-hash-size)**
+  [:chart_with_upwards_trend: plots](bacteria-experiments/jf-hash-size/Rplots.pdf)
+  [:clipboard: raw data](bacteria-experiments/jf-hash-size/data-11-9.csv)
+  [:page_with_curl: script](bacteria-experiments/jf-hash-size/run-experiment)
+
+- **[thread-count](bacteria-experiments/thread-count)**
+  [:chart_with_upwards_trend: plots](bacteria-experiments/thread-count/Rplots.pdf)
+  [:clipboard: raw data](bacteria-experiments/thread-count/data-11-8-2.csv)
+  [:page_with_curl: script](bacteria-experiments/thread-count/run-experiment)
+
+
 ### [scripts/](/scripts)
 
 The scripts directory holds some shared helper scripts that many of the experiments use
